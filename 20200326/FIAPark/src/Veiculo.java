@@ -37,4 +37,7 @@ public class Veiculo {
 		this.modelo = modelo;
 	}
 	
+	public String toString() {
+		return this.placa + " | " + this.marca + " " + this.modelo;
+	}
 }

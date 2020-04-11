@@ -16,13 +16,26 @@ public class Main {
 		String modelo = scan.nextLine();
 		
 		Veiculo veiculo = new Veiculo(placa, marca, modelo);
+		Ticket ticket = new Ticket(veiculo);
 		
-		// mesmo com o scanner o método set define os valores
-		veiculo.setMarca("Lamborghini");
-		veiculo.setModelo("Huracán");
-		veiculo.setPlaca("XXX-9999");
+		System.err.println(ticket);
+
+		System.out.printf("Veiculo %s %s com placa %s, estacionado na data %s com sucesso.\n", 
+				ticket.getVeiculo().getMarca(), ticket.getVeiculo().getModelo(), ticket.getVeiculo().getPlaca(), ticket.entradaParaTexto());
 		
-		System.out.printf("Veiculo %s %s com placa %s\n", veiculo.getMarca(), veiculo.getModelo(), veiculo.getPlaca());
+		try {
+			Thread.sleep(60000);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		ticket.registraSaida();
+		
+		System.err.println(ticket);
+		
+		System.out.printf("Veiculo %s %s com placa %s, saiu na data %s.%nO valor recebido foi de R$ %.2f.%n", 
+				ticket.getVeiculo().getMarca(), ticket.getVeiculo().getModelo(), ticket.getVeiculo().getPlaca(), ticket.saidaParaTexto(),
+				ticket.getValor());		
 		
 		scan.close();
 	}
